@@ -1,12 +1,15 @@
 <?php
-$dsn = 'mysql:host=db;dbname=miapp;charset=utf8mb4';
-$username = 'root';
-$password = 'example';
+$host = getenv('DB_HOST');
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASSWORD');
+$port = getenv('DB_PORT');
 
 try {
-    $conn= new PDO($dsn, $username, $password);
+    $conn = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8", $user, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "✅ Conexión exitosa";
 } catch (PDOException $e) {
-    die('❌ Error de conexión: ' . $e->getMessage());
+    echo "❌ Error de conexión: " . $e->getMessage();
 }
 ?>
