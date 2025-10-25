@@ -5,5 +5,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 # Copia los archivos del proyecto
 COPY . /var/www/html/
+COPY ./php-mysql-alumnos/src/ /var/www/html/
 
 EXPOSE 80
