@@ -1,12 +1,13 @@
 FROM php:8.2-apache
+FROM php:8.2-apache
 
 # Instala extensiones necesarias
 RUN docker-php-ext-install pdo pdo_mysql
 
 # Copia todos los archivos PHP al directorio raíz de Apache
-COPY ./php-mysql-alumnos/src/ /var/www/html/
+COPY ./src/ /var/www/html/
 
-# Exponer puerto 80 para HTTP
+# Exponer puerto 80
 EXPOSE 80
 
 # Ejecutar Apache en primer plano
